@@ -1,0 +1,119 @@
+<!-- ACTIVIDAD 14 
+
+OBJETIVO: manipular el texto de un área de texto y contar la cantidad de palabras y caracteres que contiene.
+DESCRIPCION: El usuario ingresa texto en un área de texto y 
+el programa muestra la cantidad de palabras y caracteres en tiempo real 
+ 
+ ALUMNA: AMERICA JAZMIN ESTRADA HERNÁNDEZ -->
+ <!DOCTYPE html>
+ <html lang="es">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Contador de Palabras y Caracteres</title>
+     <style>
+         body {
+             font-family: 'Roboto', sans-serif;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             height: 100vh;
+             margin: 0;
+             background: linear-gradient(135deg, #4facfe, #00f2fe); /* Fondo con degradado */
+         }
+         .counter-container {
+             background-color: #ffffff;
+             padding: 40px; 
+             border-radius: 15px;
+             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+             max-width: 600px; 
+             width: 100%;
+             text-align: center;
+             transition: transform 0.3s ease-in-out;
+         }
+         .counter-container:hover {
+             transform: translateY(-5px); /* Efecto levitación */
+             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+         }
+         h1 {
+             margin-bottom: 20px;
+             font-size: 28px; 
+             color: #333;
+             font-weight: bold;
+             text-transform: uppercase;
+             letter-spacing: 1px;
+             position: relative;
+         }
+         h1::after {
+             content: '';
+             position: absolute;
+             width: 50px;
+             height: 4px;
+             background-color: #ff5722; 
+             left: 50%;
+             transform: translateX(-50%);
+             bottom: -10px;
+             border-radius: 2px;
+         }
+         textarea {
+             width: 100%;
+             height: 200px; /* Cuadro de texto */
+             padding: 15px;
+             border: 2px solid #007BFF;
+             border-radius: 10px;
+             font-size: 18px;
+             box-sizing: border-box;
+             resize: none;
+             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+             transition: border-color 0.3s, box-shadow 0.3s;
+         }
+         textarea:focus {
+             border-color: #ff5722; /* Contorno al enfocarse */
+             box-shadow: 0 0 10px rgba(255, 87, 34, 0.6); /* Luz anaranjada */
+             outline: none;
+         }
+         .result {
+             margin-top: 20px;
+             font-size: 20px; /* Fuente más grande */
+             color: #ff5722; 
+             font-weight: bold;
+             padding: 15px;
+             background: #f9f9f9;
+             border-radius: 10px;
+             box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1); /* Sombra interna */
+         }
+         footer {
+             margin-top: 25px;
+             font-size: 14px;
+             color: #999;
+         }
+     </style>
+ </head>
+ <body>
+ 
+ <div class="counter-container">
+     <h1>Contador de Texto</h1>
+     
+     <textarea id="textArea" placeholder="Escribe tu texto aquí..."></textarea>
+     
+     <div class="result" id="result">Palabras: 0 | Caracteres: 0</div>
+     
+     <footer>&copy; 2024 Contador de Texto</footer>
+ </div>
+ 
+ <script>
+     document.getElementById('textArea').addEventListener('input', updateCount);
+ 
+     function updateCount() {
+         const text = document.getElementById('textArea').value.trim(); // Eliminar espacios en blanco al inicio y fin
+         const cleanedText = text.replace(/\s+/g, ' '); // Reemplazar múltiples espacios con uno solo
+         const words = cleanedText.length > 0 ? cleanedText.split(' ').filter(word => word.length > 0).length : 0; // Contar palabras válidas
+         const characters = text.length; // Contar caracteres incluyendo los espacios
+ 
+         document.getElementById('result').innerHTML = `Palabras: ${words} | Caracteres: ${characters}`;
+     }
+ </script>
+ 
+ </body>
+ </html>
+ 
